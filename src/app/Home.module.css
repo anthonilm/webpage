@@ -1,0 +1,64 @@
+/* Home.module.css — homepage-only visuals (no header impact) */
+
+/* The stack container for the homepage sections */
+.stack { display: block; }
+
+/* Every direct child <section> of .stack takes up a full viewport and centers content */
+.vh {
+  min-height: 100svh;        /* better on mobile than 100vh */
+  padding: 6rem 0;           /* breathing room like JS's pane rhythm */
+  display: grid;
+  align-items: center;
+}
+
+/* Text color inherits from the stop; default is dark for lighter stops */
+.stack > section { color: var(--on, #0E1114); }
+
+/* -------- Seagrass ombré: dark → light as you descend -------- */
+/* Stop 1 */
+.stack > section:nth-of-type(1) {
+  background: linear-gradient(180deg, #0f3832 0%, #16433c 100%);
+  --on: #f3fbf8;
+}
+/* Stop 2 */
+.stack > section:nth-of-type(2) {
+  background: linear-gradient(180deg, #16433c 0%, #1b4f46 100%);
+  --on: #f2fbf8;
+}
+/* Stop 3 */
+.stack > section:nth-of-type(3) {
+  background: linear-gradient(180deg, #1b4f46 0%, #215a50 100%);
+  --on: #f1faf7;
+}
+/* Stop 4 */
+.stack > section:nth-of-type(4) {
+  background: linear-gradient(180deg, #215a50 0%, #2a6b60 100%);
+  --on: #eef8f5;
+}
+/* Stop 5 */
+.stack > section:nth-of-type(5) {
+  background: linear-gradient(180deg, #2a6b60 0%, #3a7c70 100%);
+  --on: #eaf7f3;
+}
+/* Stop 6 */
+.stack > section:nth-of-type(6) {
+  background: linear-gradient(180deg, #3a7c70 0%, #5a978c 100%);
+  --on: #0E1114;
+}
+/* Stop 7 */
+.stack > section:nth-of-type(7) {
+  background: linear-gradient(180deg, #5a978c 0%, #8bbab0 100%);
+  --on: #0E1114;
+}
+/* Stop 8 (if you add more sections later) */
+.stack > section:nth-of-type(8) {
+  background: linear-gradient(180deg, #8bbab0 0%, #c5ddd6 100%);
+  --on: #0E1114;
+}
+
+/* Readability helpers on darker stops */
+.stack > section:nth-of-type(-n+5) a:not(.btn) { color: #e6f0ec; }
+.stack > section:nth-of-type(-n+5) .btn.secondary {
+  color: #f3fbf8;
+  border-color: rgba(255,255,255,0.5);
+}
