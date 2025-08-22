@@ -1,0 +1,113 @@
+:root{
+  /* Palette (your system) */
+  --carbon: #0a0a0a;
+  --graphite: #1f1f1f;
+  --olive: #3b4a3f;
+  --rust: #b23a1a;
+  --bone: #f3f1ec;
+
+  /* Accent oranges for the carousel-like background */
+  --orange-500: #d95d2b;
+  --orange-400: #f07d3b;
+  --orange-300: #f6a15c;
+
+  /* Layout tokens to keep Hero/About alignment */
+  --page-max: 1200px;      /* matches your main sections */
+  --gutter: 24px;
+  --radius-xxl: 28px;
+  --elev-1: 0 12px 28px rgba(0,0,0,0.18);
+}
+
+/* Universal page wrapper for sections that should match Hero/About width */
+.section-wrap{
+  width: 100%;
+  display: block;
+  padding-left: var(--gutter);
+  padding-right: var(--gutter);
+}
+.section-inner{
+  max-width: var(--page-max);
+  margin: 0 auto;
+}
+
+/* Gradient background that visually matches the second screenshot */
+.rust-gradient{
+  background: linear-gradient(135deg, var(--rust) 0%, var(--orange-500) 40%, var(--orange-300) 100%);
+  border-radius: var(--radius-xxl);
+  box-shadow: var(--elev-1);
+}
+
+/* Light bone card used inside the gradient */
+.card-bone{
+  background: var(--bone);
+  border-radius: 16px;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.08);
+}
+
+/* Typography alignment with your system */
+.h1{
+  font-size: clamp(32px, 4vw, 48px);
+  line-height: 1.1;
+  margin: 0;
+}
+.subtle{
+  color: rgba(0,0,0,0.72);
+}
+
+/* Two-column responsive grid (matches About section rhythm) */
+.grid-2{
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  gap: 24px;
+}
+@media (max-width: 980px){
+  .grid-2{ grid-template-columns: 1fr; }
+}
+
+/* Numbered list item */
+.step{
+  display: grid;
+  grid-template-columns: 40px 1fr;
+  gap: 12px;
+  align-items: start;
+  padding: 16px 18px;
+  border-radius: 14px;
+  background: white;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+  margin-bottom: 12px;
+}
+.step-num{
+  width: 40px; height: 40px;
+  border-radius: 10px;
+  display: grid; place-items: center;
+  background: var(--graphite);
+  color: white;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+.step h4{ margin: 0 0 4px 0; }
+.step p{ margin: 0; color: #475569; }
+:root{
+  --rust: #b23a1a;
+  --orange-500: #d95d2b;
+  --orange-300: #f6a15c;
+
+  --page-max: 1100px;
+  --gutter-x: 20px;
+  --radius-xxl: 28px;
+  --elev-1: 0 12px 28px rgba(0,0,0,0.18);
+}
+
+/* Section wrapper that matches Hero/About width and adds the warm gradient */
+.rust-surface-wrap{
+  width: 100%;
+  padding: clamp(24px, 4vw, 36px) var(--gutter-x);
+}
+.rust-surface{
+  max-width: var(--page-max);
+  margin: 0 auto;
+  border-radius: var(--radius-xxl);
+  background: linear-gradient(135deg, var(--rust) 0%, var(--orange-500) 40%, var(--orange-300) 100%);
+  box-shadow: var(--elev-1);
+  padding: clamp(20px, 3vw, 28px);
+}

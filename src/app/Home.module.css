@@ -62,3 +62,6 @@
   color: #f3fbf8;
   border-color: rgba(255,255,255,0.5);
 }
+.main {
+  gap: 0 !important;   /* was creating the big white band */
+}
