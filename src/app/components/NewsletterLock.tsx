@@ -1,143 +1,102 @@
+// Path: src/app/components/NewsletterLock.tsx
 "use client";
 
-import React, { useEffect, useMemo, useRef, useState } from "react";
+import React from "react";
 
-type NewsletterItem = { id: string; title: string; dateISO: string; summary: string; href: string; };
-type Props = { items: NewsletterItem[]; sectionTitle?: string; lockScroll?: boolean; };
+type NewsletterItem = {
+  id: string;
+  title: string;
+  dateISO: string;
+  summary: string;
+  href?: string;
+};
 
-export default function NewsletterLock({ items, sectionTitle = "Newsletter", lockScroll = true }: Props) {
-  const containerRef = useRef<HTMLDivElement | null>(null);
-  const [activeLock, setActiveLock] = useState(false);
+type Props = {
+  items: NewsletterItem[];
+  sectionTitle?: string;
+};
 
-  const isAtBottom = () => {
-    const el = containerRef.current;
-    if (!el) return false;
-    return el.scrollTop + el.clientHeight >= el.scrollHeight - 2;
-  };
-  const isAtTop = () => {
-    const el = containerRef.current;
-    if (!el) return true;
-    return el.scrollTop <= 1;
-  };
-
-  useEffect(() => {
-    if (!lockScroll) return;
-    const el = containerRef.current;
-    if (!el) return;
-
-    const body = document.body;
-    const root = document.documentElement;
-
-    const enableBodyScroll = () => { body.style.overflow = ""; root.style.overscrollBehavior = ""; };
-    const disableBodyScroll = () => { body.style.overflow = "hidden"; root.style.overscrollBehavior = "contain"; };
-
-    const io = new IntersectionObserver(
-      (entries) => {
-        const entry = entries[0];
-        const shouldLock = entry.isIntersecting && entry.intersectionRatio >= 0.6;
-        setActiveLock(shouldLock);
-      },
-      { threshold: [0.0, 0.6, 1.0] }
-    );
-
-    io.observe(el);
-    return () => { io.disconnect(); enableBodyScroll(); };
-  }, [lockScroll]);
-
-  useEffect(() => {
-    if (!lockScroll) return;
-    const body = document.body;
-    const root = document.documentElement;
-    const enableBodyScroll = () => { body.style.overflow = ""; root.style.overscrollBehavior = ""; };
-    const disableBodyScroll = () => { body.style.overflow = "hidden"; root.style.overscrollBehavior = "contain"; };
-    if (activeLock) disableBodyScroll(); else enableBodyScroll();
-    return () => enableBodyScroll();
-  }, [activeLock, lockScroll]);
-
-  useEffect(() => {
-    if (!lockScroll) return;
-    const onWheel = (e: WheelEvent) => {
-      const el = containerRef.current; if (!el) return;
-      if (activeLock) {
-        const d = e.deltaY;
-        if ((isAtTop() && d < 0) || (isAtBottom() && d > 0)) setActiveLock(false);
-      }
-    };
-    window.addEventListener("wheel", onWheel, { passive: true });
-    return () => window.removeEventListener("wheel", onWheel);
-  }, [activeLock, lockScroll]);
-
-  useEffect(() => {
-    const onKeyDown = (e: KeyboardEvent) => {
-      const el = containerRef.current; if (!el || !activeLock) return;
-      const PAGE = el.clientHeight;
-      if (e.key === "PageDown" || e.key === " ") { e.preventDefault(); el.scrollBy({ top: PAGE, behavior: "smooth" }); if (isAtBottom()) setActiveLock(false); }
-      else if (e.key === "PageUp") { e.preventDefault(); el.scrollBy({ top: -PAGE, behavior: "smooth" }); if (isAtTop()) setActiveLock(false); }
-      else if (e.key === "Escape") { setActiveLock(false); }
-      else if (e.key === "ArrowDown") { el.scrollBy({ top: Math.round(PAGE * 0.9), behavior: "smooth" }); }
-      else if (e.key === "ArrowUp") { el.scrollBy({ top: Math.round(-PAGE * 0.9), behavior: "smooth" }); }
-    };
-    window.addEventListener("keydown", onKeyDown);
-    return () => window.removeEventListener("keydown", onKeyDown);
-  }, [activeLock]);
-
-  const sorted = useMemo(() => [...items].sort((a, b) => new Date(b.dateISO).getTime() - new Date(a.dateISO).getTime()), [items]);
-  const formatted = useMemo(
-    () => sorted.map(n => ({
-      ...n,
-      dateLabel: new Date(n.dateISO).toLocaleDateString(undefined, { year: "numeric", month: "short", day: "numeric" })
-    })), [sorted]
-  );
-
+export default function NewsletterLock(_: Props) {
   return (
-    <section className="section" aria-label={sectionTitle} id="newsletter-lock" style={{ padding: 0, marginTop: 32 }}>
-      <header className="container" style={{ paddingTop: 48, paddingBottom: 16 }}>
-        <div style={{ display: "flex", alignItems: "baseline", justifyContent: "space-between" }}>
-          <h2>{sectionTitle}</h2>
-          <p className="muted">Recent issues</p>
+    <section id="insights" className="insights-wrap" aria-label="Book a 1:1 Session">
+      <div className="container hero">
+        <h2 className="title">Book a 1:1 Session</h2>
+
+        <p className="lead">
+          My core service is working 1:1 with individuals to build and sustain personalized systems for cognitive performance,
+          organizational flow, and mental well-being. If you’re ready to strengthen decision-making, sustain peak performance,
+          and enhance day-to-day function, schedule your free, first session.
+        </p>
+
+        <div>
+          <a className="btn ghost" href="/book-session" aria-label="Schedule a 1:1 session">
+            Schedule Now →
+          </a>
         </div>
-      </header>
-
-      <div
-        ref={containerRef}
-        className="rail-surface"
-        role="region"
-        aria-roledescription="Locked vertical scroll list"
-        aria-label="Newsletter issues"
-        tabIndex={0}
-        style={{ position: "relative", height: "100vh", overflowY: "auto", scrollSnapType: "y mandatory" }}
-      >
-        {formatted.map((n, i) => (
-          <article
-            key={n.id}
-            className={i < formatted.length - 1 ? "issue-divider" : undefined}
-            style={{ scrollSnapAlign: "start", minHeight: "100vh", display: "grid", alignItems: "center" }}
-            aria-labelledby={`nl-${n.id}-title`}
-          >
-            <div className="container" style={{ display: "grid", gap: 14 }}>
-              <div style={{ display: "flex", gap: 14, alignItems: "center" }} className="muted">
-                <span style={{ fontVariantNumeric: "tabular-nums", fontWeight: 700 }}>
-                  {String(i + 1).padStart(2, "0")}
-                </span>
-                <time dateTime={n.dateISO}>{n.dateLabel}</time>
-              </div>
-
-              <h3 id={`nl-${n.id}-title`} style={{ marginBottom: 6 }}>{n.title}</h3>
-              <p style={{ color: "var(--graphite-600)", maxWidth: 860 }}>{n.summary}</p>
-
-              <div style={{ marginTop: 6 }}>
-                <a className="btn secondary" href={n.href} aria-label={`Open newsletter issue: ${n.title}`}>Read issue</a>
-              </div>
-            </div>
-          </article>
-        ))}
       </div>
 
-      <footer className="container" style={{ paddingTop: 16, paddingBottom: 48 }}>
-        <button className="btn secondary" type="button" onClick={() => setActiveLock(false)} aria-label="Exit locked scroll">
-          Exit
-        </button>
-      </footer>
+      <style jsx>{`
+        .insights-wrap {
+          margin: 0;
+          padding: 0;
+          min-height: 100vh;
+          width: 100%;
+          display: grid;
+          place-items: center;
+          background: linear-gradient(
+            180deg,
+            var(--bone, #f3f1ec) 0%,
+            #f7eadf 38%,
+            #f3d5bd 100%
+          );
+        }
+
+        .container {
+          max-width: 1100px;
+          margin: 0 auto;
+          padding-left: 20px;
+          padding-right: 20px;
+        }
+
+        .hero {
+          text-align: center;
+          display: grid;
+          gap: 16px;
+          justify-items: center;
+        }
+
+        .title {
+          margin: 0;
+          line-height: 0.95;
+          letter-spacing: -0.04em;
+          font-size: clamp(48px, 9vw, 120px);
+        }
+
+        .lead {
+          margin: 0;
+          max-width: 860px;
+          font-size: 1.05rem;
+          line-height: 1.6;
+        }
+
+        /* Make button text black */
+        .btn.ghost,
+        .btn.ghost:visited,
+        .btn.ghost:hover,
+        .btn.ghost:active,
+        .btn.ghost:focus {
+          color: var(--ink, #151515) !important;
+        }
+        .btn.ghost {
+          display: inline-block;
+          padding: 10px 16px;
+          border-radius: 999px;
+          border: 1px solid rgba(0,0,0,0.18);
+          background: transparent;
+          text-decoration: none;
+          font-weight: 600;
+        }
+      `}</style>
     </section>
   );
 }
