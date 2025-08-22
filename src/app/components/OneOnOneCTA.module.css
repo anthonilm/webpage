@@ -1,51 +1,41 @@
 .section {
-  /* translucent surface on top of the current ombré stop */
-  background: linear-gradient(180deg, rgba(255,255,255,0.12), rgba(255,255,255,0.06));
+  background: var(--carbon, #0a0b0a);
+  color: var(--bone, #f2f2ee);
+  padding: clamp(32px, 5vw, 64px) 0;
 }
 
 .container {
-  max-width: 880px;
+  max-width: 980px;
   margin: 0 auto;
-  padding: 0 var(--gutter);
-  text-align: center;
+  padding: 0 20px;
 }
 
 .headline {
-  font-size: clamp(28px, 4vw, 40px);
-  margin-bottom: 16px;
-  letter-spacing: -0.015em;
+  font-size: clamp(1.6rem, 3vw, 2rem);
+  margin: 0 0 12px 0;
+  letter-spacing: -0.01em;
 }
 
 .text {
-  font-size: 18px;
-  line-height: 1.7;
-  opacity: 0.95;
-  margin: 0 auto 20px auto;
-  color: #f7fffb;
+  margin: 0 0 18px 0;
+  line-height: 1.6;
+  opacity: 0.92;
 }
 
 .button {
   display: inline-flex;
   align-items: center;
-  gap: 10px;
-  padding: 12px 20px;
-  border-radius: 999px;
-  background: #ffffff;
-  color: var(--sea-900);
-  font-weight: 800;
-  border: 1px solid rgba(255,255,255,0.5);
+  gap: 8px;
+  padding: 10px 14px;
+  border-radius: 12px;
   text-decoration: none;
-  transition: transform var(--dur-quick) var(--ease), box-shadow var(--dur-quick) var(--ease);
+  color: var(--bone, #f2f2ee);
+  background: color-mix(in srgb, var(--rust, #b14a2a) 84%, black);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  transition: transform 180ms ease, box-shadow 180ms ease;
 }
-.button:hover { transform: translateY(-1px); box-shadow: var(--shadow-1); }
-.section { background: transparent; }
-.container { max-width: 880px; margin: 0 auto; padding: 0 var(--gutter); text-align: center; }
-.headline { font-size: clamp(28px,4vw,40px); margin-bottom: 16px; letter-spacing: -0.015em; }
-.text { font-size: 18px; line-height: 1.7; margin: 0 auto 20px auto; color: var(--slate); }
-.button{
-  display: inline-flex; align-items: center; gap: 10px;
-  padding: 12px 20px; border-radius: 999px; text-decoration: none;
-  background: var(--saffron); color: #2a1b00; font-weight: 800; border: 1px solid var(--line);
-  transition: transform var(--dur) var(--ease), box-shadow var(--dur) var(--ease);
+
+.button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 10px 22px rgba(0, 0, 0, 0.4);
 }
-.button:hover{ transform: translateY(-1px); box-shadow: var(--shadow-1); }

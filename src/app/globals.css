@@ -252,3 +252,34 @@ body {
 
 /* Newsletter lock rail hairlines (still work on darker backgrounds) */
 .issue-divider { border-bottom: 1px solid rgba(255,255,255,0.22); }
+/* Reset margin/padding */
+html, body {
+  margin: 0;
+  padding: 0;
+}
+
+/* Remove unwanted gap between header and hero */
+header, .hero {
+  margin: 0;
+  padding: 0;
+}
+html, body {
+  margin: 0;
+  padding: 0;
+}
+section {
+  margin: 0;
+  padding: 0;
+}
+/* Remove browser default gap */
+html, body, main { margin: 0; padding: 0; }
+
+/* Collapse any margins/padding between stacked sections */
+main > * { margin: 0; }
+main > section { padding: 0; border: 0; }
+
+/* Make sure the first element after the sticky header has no top offset */
+header + * { margin-top: 0 !important; padding-top: 0 !important; }
+
+/* If you use .section-vh anywhere, ensure it doesn't add vertical padding */
+.section-vh { padding-block: 0 !important; margin-block: 0 !important; }
