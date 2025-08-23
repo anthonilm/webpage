@@ -1,0 +1,155 @@
+/* Root section — match site background and typography, kill the top gap */
+.who-we-are-section--horizontal {
+  background: linear-gradient(to bottom, #F8F6F2, #FFFFFF);
+  color: #111111;
+  margin: 0 !important;              /* no external gap */
+  padding: 0 1.5rem 3rem !important; /* top = 0 to butt against previous section */
+  font-family: var(--font-geist-sans), sans-serif;
+}
+
+/* Headline */
+.who-headline--horizontal {
+  margin: 0 0 1.5rem 0;              /* no top margin so it doesn’t collapse upward */
+  text-align: center;
+  font-size: clamp(1.6rem, 2.2vw, 2rem);
+  color: #111111;
+}
+
+/* HORIZONTAL SCROLL ROW */
+.who-scroll-row {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: max-content;
+  column-gap: 1.5rem;
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding-bottom: 0.75rem;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Each group */
+.section-group--horizontal {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  scroll-snap-align: start;
+}
+
+/* Title above each tile */
+.section-title--horizontal {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: #111111;
+  margin: 0 0 0.75rem 0;
+}
+
+/* Tile block — light card that matches site cards */
+.section-tile--horizontal {
+  width: 210px;
+  height: 210px;
+  background-color: rgba(0, 0, 0, 0.04);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  padding: 1.125rem;
+  border-radius: 0.75rem;
+  box-shadow: 0 1.5px 9px rgba(0, 0, 0, 0.08);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+}
+.section-tile--horizontal:hover {
+  background-color: rgba(0, 0, 0, 0.06);
+  transform: translateY(-3px);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
+}
+
+/* Icon inside tile — keep brand green for accents */
+.tile-icon--horizontal {
+  color: #0f3832;
+  margin-bottom: 0.375rem;
+}
+.tile-icon--horizontal :where(svg) {
+  display: block;
+}
+
+/* Tile text */
+.section-tile--horizontal p {
+  font-size: 0.9rem;
+  line-height: 1.4;
+  color: #111111;
+}
+
+/* Learn More button — light theme */
+.learn-more-button--horizontal {
+  background-color: transparent;
+  border: 1px solid rgba(0, 0, 0, 0.16);
+  color: #111111;
+  padding: 0.375rem 0.75rem;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.075em;
+  cursor: pointer;
+  border-radius: 8px;
+  transition: background-color 0.2s, color 0.2s, border-color 0.2s;
+}
+.learn-more-button--horizontal:hover {
+  background-color: #111111;
+  color: #F8F6F2;
+  border-color: #111111;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .who-headline--horizontal {
+    margin-bottom: 1.125rem;
+  }
+}
+.who-headline--horizontal {
+  margin: 0 0 1.5rem 0;
+  text-align: center;
+  /* title/header scale to match site */
+  font-size: clamp(3rem, 3.8vw, 3.5rem);
+  font-weight: 800;
+  letter-spacing: 0.01em;
+  font-family: var(--font-geist-sans), sans-serif;
+  color: #111111;
+}
+/* Title above each tile */
+.section-title--horizontal {
+  /* was: font-size: 1.125rem; */
+  font-size: clamp(1.1rem, 1.6vw, 1.35rem);
+  font-weight: 600;
+  color: #111111;
+  margin: 0 0 0.75rem 0;
+}
+
+/* Tile block */
+.section-tile--horizontal {
+  width: 210px;
+  /* was: height: 210px; */
+  min-height: 210px;            /* lets content grow if text wraps more */
+  background-color: rgba(0, 0, 0, 0.04);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  padding: 1.125rem;
+  border-radius: 0.75rem;
+  box-shadow: 0 1.5px 9px rgba(0, 0, 0, 0.08);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.4rem;                  /* breathing room with larger type */
+  transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Tile text */
+.section-tile--horizontal p {
+  /* was: font-size: 0.9rem; line-height: 1.4; */
+  font-size: clamp(1rem, 1.35vw, 1.15rem);
+  line-height: 1.5;
+  color: #111111;
+}

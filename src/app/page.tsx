@@ -1,5 +1,4 @@
 // app/page.tsx
-import Header from "./components/Header";
 import Hero from "./components/Hero";
 import AboutSection from "./components/AboutSection"; // <-- move import to the top
 import EmailSignup from "./components/EmailSignup";
@@ -7,6 +6,7 @@ import NewsletterLock from "./components/NewsletterLock";
 import SiteFooter from "./components/SiteFooter";
 import CookieBanner from "./components/CookieBanner";
 import OneOnOneCTA from "./components/OneOnOneCTA";
+import WhoWeAreHorizontal from "./components/WhoWeAreHorizontal"; // <-- NEW
 
 const NL_ITEMS = [
   {
@@ -28,7 +28,6 @@ const NL_ITEMS = [
 export default function HomePage() {
   return (
     <>
-      <Header />
       <main>
         {/* Hero (fills viewport under sticky header) */}
         <section className="section-vh">
@@ -84,6 +83,9 @@ export default function HomePage() {
             </div>
           </div>
         </section>
+
+        {/* NEW: Who We Are horizontal section (above footer) */}
+        <WhoWeAreHorizontal />
       </main>
       <SiteFooter />
       <CookieBanner />

@@ -1,0 +1,142 @@
+/* Wrapper */
+.wrapper {
+  min-height: 100vh;
+  background: linear-gradient(to bottom, #F8F6F2, #FFFFFF);
+  padding: 4rem 2rem;
+  font-family: var(--font-geist-sans);
+}
+
+/* Headings */
+.heading {
+  font-size: 2.5rem;
+  font-family: var(--font-cormorant);
+  color: #111111;
+  text-align: center;
+  margin-bottom: 2rem;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+}
+
+/* Promo headline (kept consistent with your Student Services headline sizing) */
+.promoHeadline {
+  font-family: var(--font-geist-sans), sans-serif;
+  font-size: 2.5rem;
+  text-align: center;
+  max-width: 72ch;
+  margin: 0 auto 2rem;
+  line-height: 1.2;
+  color: #111111;
+}
+
+/* “Areas I Help With” */
+.areasSection {
+  background: linear-gradient(to bottom, #F8F6F2, #FFFFFF);
+  border-radius: 12px;
+  padding: 2rem;
+  margin-bottom: 4rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+}
+
+.subheading {
+  font-size: 2rem;
+  font-family: var(--font-cormorant);
+  color: #111111;
+  text-align: center;
+  margin-bottom: 2rem;
+  font-weight: 500;
+}
+
+.areasGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 0.75rem 2rem;
+}
+
+.areaItem {
+  font-size: 1.05rem;
+  color: #222222;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  padding-bottom: 0.4rem;
+  letter-spacing: 0.2px;
+  line-height: 1.6;
+}
+
+/* Tiles */
+.scrollContainer {
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+  flex-wrap: wrap;
+  gap: 2rem;
+  padding-bottom: 3rem;
+  scrollbar-width: none;
+}
+.scrollContainer::-webkit-scrollbar { display: none; }
+
+.tile {
+  flex: 0 1 340px;
+  background-color: #0f3832; /* brand dark green */
+  color: #e4d3aa;            /* brand gold */
+  border: none;
+  border-radius: 12px;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  min-height: 240px;
+}
+
+.tile:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+}
+
+/* Tile typography */
+.tile h2 {
+  font-size: 1.6rem;
+  font-family: var(--font-cormorant);
+  color: #e4d3aa;
+  margin: 0 0 0.75rem 0;
+  font-weight: 600;
+  letter-spacing: 0.4px;
+}
+
+.tile p {
+  font-size: 1.05rem;
+  color: #e4d3aa;
+  line-height: 1.6;
+  margin: 0;
+  max-width: 28ch;
+}
+
+/* CTA button */
+.ctaButton {
+  margin-top: 1.25rem;
+  display: inline-block;
+  padding: 0.85rem 1.25rem;
+  border-radius: 10px;
+  text-decoration: none;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+  background-color: #e4d3aa; /* gold as button bg */
+  color: #0f3832;            /* green as text */
+  box-shadow: 0 2px 8px rgba(0,0,0,0.10);
+  transition: transform 0.15s ease, box-shadow 0.15s ease, opacity 0.15s ease;
+}
+
+.ctaButton:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+  opacity: 0.95;
+}
+
+/* Tag for upcoming items */
+.comingSoon {
+  margin-top: 1rem;
+  font-size: 0.95rem;
+  opacity: 0.85;
+}

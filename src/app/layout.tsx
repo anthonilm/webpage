@@ -1,18 +1,23 @@
-// app/layout.tsx
-import type { Metadata } from "next";
 import "./globals.css";
+import type { Metadata } from "next";
+import Header from "./components/Header"; // ← adjust this import to your Header.tsx location
 
 export const metadata: Metadata = {
-  title: "Noesis Systems LLC",
-  description: "Perform Better. Recover Faster. Rest Easy.",
+  title: "NOESIS",
+  description: "Noesis Systems",
 };
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
-  // Assuming you already register Geist / Geist Mono elsewhere in the project
-  // (e.g., with next/font/local in _fonts.ts and set CSS vars --font-geist / --font-geist-mono)
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body>
+        <Header />
+        {children}
+      </body>
     </html>
   );
 }

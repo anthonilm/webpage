@@ -61,7 +61,7 @@ export default function Header() {
           <div style={{ width: 1, height: 24, background: line }} />
           <nav style={{ display: "flex", gap: 18, whiteSpace: "nowrap" }}>
             <Link href="/about" style={nav(ink)}>ABOUT</Link>
-            <Link href="/insights" style={nav(ink)}>INSIGHTS</Link>
+            <Link href="/insights" style={nav(ink)}>NEWSLETTERS</Link>
             <Link href="/insights" style={nav(ink)}>THE NOESIS METHOD</Link>
           </nav>
         </div>
@@ -73,8 +73,8 @@ export default function Header() {
 
         {/* right */}
         <nav style={{ display: "flex", justifyContent: "flex-end", alignItems: "center", gap: 24, whiteSpace: "nowrap" }}>
-          <Link href="/services" style={nav(ink)}>SERVICES</Link>
-          <Link href="/for-students" style={nav(ink)}>FOR STUDENTS</Link>
+          <Link href="/services" style={nav(ink)}>CONSULTING SERVICES</Link>
+          <Link href="/for-students" style={nav(ink)}>10 TOOLS</Link>
           <Link href="/contact" style={nav(ink)}>CONTACT</Link>
         </nav>
       </div>
