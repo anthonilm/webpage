@@ -62,6 +62,7 @@ export default function Header() {
           <nav style={{ display: "flex", gap: 18, whiteSpace: "nowrap" }}>
             <Link href="/about" style={nav(ink)}>ABOUT</Link>
             <Link href="/insights" style={nav(ink)}>INSIGHTS</Link>
+            <Link href="/insights" style={nav(ink)}>THE NOESIS METHOD</Link>
           </nav>
         </div>
 

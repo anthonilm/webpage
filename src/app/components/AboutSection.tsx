@@ -37,7 +37,7 @@ export default function AboutSection() {
         }}
       >
         <Image
-          src="/about-headshot.jpg"
+          src="/new-photo.jpg"
           alt="About headshot"
           fill
           priority
@@ -98,6 +98,24 @@ export default function AboutSection() {
           `,
         }}
       />
+
+      {/* Name and Title block */}
+      <div
+        style={{
+          position: "absolute",
+          top: "50%",
+          right: "8%",
+          transform: "translateY(-50%)",
+          textAlign: "center",
+          color: "#000",
+          fontFamily: "serif",
+          lineHeight: 1.4,
+        }}
+      >
+        <div style={{ fontSize: "6rem", fontWeight: 700 }}>Anthoni McElrath</div>
+        <div style={{ fontSize: "3.6rem", marginTop: "1.2rem" }}>MA, LMHC</div>
+        <div style={{ fontSize: "3rem", marginTop: "1.2rem" }}>Founder & Consultant</div>
+      </div>
 
       {/* Bottom-center ABOUT button */}
       <div

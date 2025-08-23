@@ -1,4 +1,3 @@
-// components/SiteFooter.tsx
 "use client";
 import React from "react";
 
@@ -8,11 +7,7 @@ export default function SiteFooter() {
   const handleSubmit: React.FormEventHandler<HTMLFormElement> = (e) => {
     e.preventDefault();
     const fd = new FormData(e.currentTarget);
-    console.log({
-      name: fd.get("name"),
-      email: fd.get("email"),
-    });
-    // Wire to your provider later.
+    console.log({ name: fd.get("name"), email: fd.get("email") });
   };
 
   return (
@@ -20,28 +15,14 @@ export default function SiteFooter() {
       <div className="wrap">
         {/* Top grid */}
         <div className="cols">
-          {/* Left nav column */}
-          <nav className="col nav" aria-label="Footer primary links">
-            <ul>
+          {/* Pages list (one column) */}
+          <nav className="col nav" aria-label="Footer site pages">
+            <ul className="pages">
               <li><a href="/about">ABOUT</a></li>
-              <li><a href="/on-purpose">ON PURPOSE</a></li>
-              <li><a href="/blogs">BLOGS</a></li>
-              <li><a href="/press">PRESS</a></li>
-              <li><a href="/8-rules-of-love">8 RULES OF LOVE</a></li>
-              <li><a href="/think-like-a-monk">THINK LIKE A MONK</a></li>
-              <li><a href="/speaking">SPEAKING</a></li>
-            </ul>
-          </nav>
-
-          {/* Middle nav column */}
-          <nav className="col nav" aria-label="Footer secondary links">
-            <ul>
-              <li><a href="/juni">JUNI</a></li>
-              <li><a href="/house-of-1212">HOUSE OF 1212</a></li>
-              <li><a href="/find-a-coach">FIND A COACH</a></li>
-              <li><a href="/become-a-coach">BECOME A COACH</a></li>
-              <li><a href="/genius">GENIUS</a></li>
-              <li><a href="/daily-on-calm">DAILY JAY ON CALM</a></li>
+              <li><a href="/10-tools">10 TOOLS</a></li>
+              <li><a href="/newsletters">NEWSLETTERS</a></li>
+              <li><a href="/services">CONSULTING SERVICES</a></li>
+              <li><a href="/student-services">STUDENT SERVICES</a></li>
               <li><a href="/connect">CONNECT</a></li>
             </ul>
           </nav>
@@ -54,27 +35,13 @@ export default function SiteFooter() {
             </p>
 
             <form className="signup" onSubmit={handleSubmit} aria-label="Newsletter signup">
-              <input
-                name="name"
-                type="text"
-                placeholder="NAME"
-                aria-label="Name"
-                autoComplete="name"
-              />
-              <input
-                name="email"
-                type="email"
-                placeholder="EMAIL"
-                aria-label="Email"
-                autoComplete="email"
-                required
-              />
+              <input name="name" type="text" placeholder="NAME" aria-label="Name" autoComplete="name" />
+              <input name="email" type="email" placeholder="EMAIL" aria-label="Email" autoComplete="email" required />
               <button type="submit">SUBSCRIBE</button>
             </form>
 
             <p className="small">
-              By clicking "subscribe," I agree to the{" "}
-              <a href="/privacy">Privacy Policy</a>.
+              By clicking "subscribe," I agree to the <a href="/privacy">Privacy Policy</a>.
             </p>
 
             {/* Social row */}
@@ -104,31 +71,6 @@ export default function SiteFooter() {
                     </svg>
                   </a>
                 </li>
-                <li>
-                  <a href="#" aria-label="LinkedIn">
-                    <svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true">
-                      <rect x="3" y="3" width="18" height="18" rx="2" />
-                      <rect x="6" y="10" width="3" height="8" fill="#fff" />
-                      <rect x="6" y="6" width="3" height="3" fill="#fff" />
-                      <path d="M12 10h2.6a3.4 3.4 0 0 1 3.4 3.4V18h-3v-4c0-.8-.6-1.4-1.4-1.4H12V18h-3v-8h3z" fill="#fff" />
-                    </svg>
-                  </a>
-                </li>
-                <li>
-                  <a href="#" aria-label="YouTube">
-                    <svg viewBox="0 0 24 24" width="28" height="20" aria-hidden="true">
-                      <rect x="2" y="5" width="20" height="14" rx="3" />
-                      <polygon points="10,9 16,12 10,15" fill="#fff" />
-                    </svg>
-                  </a>
-                </li>
-                <li>
-                  <a href="#" aria-label="Pinterest">
-                    <svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true">
-                      <path d="M12 3a9 9 0 0 0-3.4 17.3l.8-3c.1-.5.1-1-.1-1.5-.2-.6-.5-1.9-.5-2.4 0-2 1.2-3.5 2.7-3.5 1.3 0 2 .9 2 .2 0-.4-.2-1.3-.6-1.7-.4-.5-1.1-.7-1.8-.7-2.1 0-3.6 1.7-3.6 4 0 1.5.5 2.5.5 2.5l-2 8.2a9 9 0 1 0 5.8-17.4z" />
-                    </svg>
-                  </a>
-                </li>
               </ul>
             </div>
           </div>
@@ -149,7 +91,8 @@ export default function SiteFooter() {
         #site-footer {
           background: transparent;
           color: #111;
-          border-top: 1px solid rgba(0, 0, 0, 0.08);
+          /* Remove any borders on the footer itself */
+          border: 0;
         }
         .wrap {
           max-width: 1200px;
@@ -157,32 +100,31 @@ export default function SiteFooter() {
           padding: 56px 24px 24px;
         }
 
-        /* Top grid */
+        /* Top grid: Nav + Newsletter */
         .cols {
           display: grid;
-          grid-template-columns: 1fr 1fr 1.6fr;
+          grid-template-columns: 1fr 1.6fr;
           gap: 56px;
           align-items: start;
         }
 
-        /* Nav columns */
-        .nav ul {
+        /* Pages list: ONE column, even spacing */
+        .pages {
           list-style: none;
           padding: 0;
           margin: 0;
           display: grid;
-          gap: 18px;
+          gap: 14px;
         }
-        .nav a {
+        .pages a {
           text-decoration: none;
           color: inherit;
           font-weight: 750;
           letter-spacing: 0.02em;
           font-size: 15px;
+          line-height: 1.4;
         }
-        .nav a:hover {
-          opacity: 0.7;
-        }
+        .pages a:hover { opacity: 0.7; }
 
         /* Newsletter column */
         .newsletter h3 {
@@ -209,13 +151,9 @@ export default function SiteFooter() {
           background: #0e0e0e;
           color: #fff;
           padding: 0 18px;
-          border-radius: 0;
           font-size: 15px;
-          letter-spacing: 0.04em;
         }
-        .signup input::placeholder {
-          color: #fff;
-        }
+        .signup input::placeholder { color: #fff; }
         .signup button {
           height: 56px;
           padding: 0 28px;
@@ -225,19 +163,14 @@ export default function SiteFooter() {
           letter-spacing: 0.04em;
           cursor: pointer;
         }
-        .signup button:hover {
-          background: #0e0e0e;
-          color: #fff;
-        }
+        .signup button:hover { background: #0e0e0e; color: #fff; }
+
         .small {
           margin-top: 14px;
           font-size: 12px;
           color: rgba(0, 0, 0, 0.75);
         }
-        .small a {
-          color: inherit;
-          text-decoration: underline;
-        }
+        .small a { color: inherit; text-decoration: underline; }
 
         /* Social */
         .social {
@@ -245,31 +178,12 @@ export default function SiteFooter() {
           align-items: center;
           gap: 20px;
           margin-top: 28px;
-          flex-wrap: wrap;
         }
-        .follow {
-          font-weight: 800;
-          letter-spacing: 0.06em;
-          margin-right: 8px;
-        }
-        .social ul {
-          list-style: none;
-          display: flex;
-          gap: 24px;
-          padding: 0;
-          margin: 0;
-        }
-        .social a {
-          color: #111;
-          display: inline-flex;
-          align-items: center;
-          justify-content: center;
-        }
-        .social svg {
-          fill: currentColor;
-        }
+        .follow { font-weight: 800; letter-spacing: 0.06em; }
+        .social ul { list-style: none; display: flex; gap: 24px; padding: 0; margin: 0; }
+        .social svg { fill: currentColor; }
 
-        /* Bottom bar */
+        /* Bottom bar — NO BORDER LINE */
         .bottom {
           display: grid;
           grid-template-columns: auto auto auto 1fr;
@@ -277,39 +191,18 @@ export default function SiteFooter() {
           align-items: center;
           padding-top: 28px;
           margin-top: 28px;
-          border-top: 1px solid rgba(0, 0, 0, 0.08);
+          border-top: none;          /* ← removes the line */
           font-size: 14px;
         }
-        .bottom a {
-          text-decoration: none;
-          color: inherit;
-          font-weight: 700;
-        }
-        .bottom a:hover {
-          opacity: 0.75;
-        }
-        .siteby {
-          justify-self: end;
-        }
+        .bottom a { text-decoration: none; color: inherit; font-weight: 700; }
+        .siteby { justify-self: end; }
 
         /* Responsive */
         @media (max-width: 1000px) {
-          .cols {
-            grid-template-columns: 1fr 1fr;
-          }
-          .newsletter {
-            grid-column: 1 / -1;
-          }
-          .signup {
-            grid-template-columns: 1fr;
-          }
-          .bottom {
-            grid-template-columns: 1fr;
-            gap: 8px;
-          }
-          .siteby {
-            justify-self: start;
-          }
+          .cols { grid-template-columns: 1fr; gap: 40px; }
+          .signup { grid-template-columns: 1fr; }
+          .bottom { grid-template-columns: 1fr; gap: 8px; }
+          .siteby { justify-self: start; }
         }
       `}</style>
     </footer>
