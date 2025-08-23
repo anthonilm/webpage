@@ -6,29 +6,19 @@
   font-family: var(--font-geist-sans);
 }
 
-/* Headings */
-.heading {
-  font-size: 2.5rem;
-  font-family: var(--font-cormorant);
-  color: #111111;
-  text-align: center;
-  margin-bottom: 2rem;
-  font-weight: 500;
-  letter-spacing: 0.5px;
-}
-
-/* Promo headline (kept consistent with your Student Services headline sizing) */
+/* Promo Headline (sticky; no background box) */
 .promoHeadline {
   font-family: var(--font-geist-sans), sans-serif;
   font-size: 2.5rem;
   text-align: center;
   max-width: 72ch;
-  margin: 0 auto 2rem;
+  margin: 0 auto;
   line-height: 1.2;
   color: #111111;
+  background: transparent; /* ensure no box */
 }
 
-/* “Areas I Help With” */
+/* Section: Areas I Help With */
 .areasSection {
   background: linear-gradient(to bottom, #F8F6F2, #FFFFFF);
   border-radius: 12px;
@@ -61,7 +51,18 @@
   line-height: 1.6;
 }
 
-/* Tiles */
+/* Headings */
+.heading {
+  font-size: 2.5rem;
+  font-family: var(--font-cormorant);
+  color: #111111;
+  text-align: center;
+  margin-bottom: 2rem;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+}
+
+/* Service Tiles */
 .scrollContainer {
   display: flex;
   justify-content: center;
@@ -75,8 +76,8 @@
 
 .tile {
   flex: 0 1 340px;
-  background-color: #0f3832; /* brand dark green */
-  color: #e4d3aa;            /* brand gold */
+  background-color: #0f3832;
+  color: #e4d3aa;
   border: none;
   border-radius: 12px;
   padding: 2rem;
@@ -95,7 +96,6 @@
   box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
 }
 
-/* Tile typography */
 .tile h2 {
   font-size: 1.6rem;
   font-family: var(--font-cormorant);
@@ -122,8 +122,8 @@
   text-decoration: none;
   font-weight: 600;
   letter-spacing: 0.3px;
-  background-color: #e4d3aa; /* gold as button bg */
-  color: #0f3832;            /* green as text */
+  background-color: #e4d3aa;
+  color: #0f3832;
   box-shadow: 0 2px 8px rgba(0,0,0,0.10);
   transition: transform 0.15s ease, box-shadow 0.15s ease, opacity 0.15s ease;
 }
@@ -134,9 +134,17 @@
   opacity: 0.95;
 }
 
-/* Tag for upcoming items */
 .comingSoon {
   margin-top: 1rem;
   font-size: 0.95rem;
   opacity: 0.85;
+}
+.calendlyWrapper {
+  width: 100%;
+  max-width: 960px;
+  margin: 2rem auto;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.08);
+  background: #fff;
 }

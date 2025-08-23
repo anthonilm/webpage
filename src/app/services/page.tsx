@@ -1,7 +1,7 @@
 "use client";
 
+import React, { useState } from "react";
 import { motion } from "framer-motion";
-import Link from "next/link";
 import styles from "./ServicesPage.module.css";
 
 const areasIHelpWith = [
@@ -23,44 +23,34 @@ const sections = {
       description:
         "Direct performance sessions focused on decision-making, recovery, and behavioral stability.",
       checkoutUrl: "https://www.paypal.com/ncp/payment/R2K8FTNDEH928",
-      ctaText: "Lock it in.",
     },
     {
       title: "Behavioral Diagnostics",
       description:
         "Get mapped using our COM-B-based assessment to understand what’s helping and what’s blocking you.",
       checkoutUrl: "https://www.paypal.com/ncp/payment/V65JZBVSQJ594",
-      ctaText: "Lock it in.",
     },
     {
       title: "6-Session Package – $400",
       description:
         "Includes COM-B assessment, Individualized Executive Plan (IEP), and access to physical movement facilities such as yoga.",
       checkoutUrl: "https://www.paypal.com/ncp/payment/KMQK6HTCMY7CQ",
-      ctaText: "Lock it in.",
     },
     {
       title: "3-Session Package – $200",
       description:
         "Includes COM-B assessment, Individualized Executive Plan (IEP), and access to physical movement facilities such as yoga.",
       checkoutUrl: "https://www.paypal.com/ncp/payment/KN9RGNWTMTEWQ",
-      ctaText: "Lock it in.",
     },
   ],
-  Books: [
-    {
-      title: "Performance Mastery (Coming Soon)",
-      description:
-        "A reference guide to behavioral infrastructure and executive resilience.",
-      checkoutUrl: "#",
-      ctaText: "Lock it in.",
-    },
-  ],
-} as const;
+};
 
 export default function ServicesPage() {
+  const [selectedUrl, setSelectedUrl] = useState<string | null>(null);
+
   return (
     <main className={styles.wrapper}>
+      {/* Headline */}
       <motion.h1
         className={styles.promoHeadline}
         initial={{ opacity: 0, y: 30 }}
@@ -71,6 +61,7 @@ export default function ServicesPage() {
         Reduce burnout, sharpen discipline, and expand generativity and creativity with a weekly performance system—choose your plan and get to work.
       </motion.h1>
 
+      {/* Areas I Help With */}
       <section className={styles.areasSection}>
         <h2 className={styles.subheading}>Areas I Help With</h2>
         <div className={styles.areasGrid}>
@@ -82,6 +73,7 @@ export default function ServicesPage() {
         </div>
       </section>
 
+      {/* Services Section */}
       {Object.entries(sections).map(([category, items]) => (
         <div key={category}>
           <h2 className={styles.heading}>{category}</h2>
@@ -90,22 +82,37 @@ export default function ServicesPage() {
               <div className={styles.tile} key={idx}>
                 <h2>{item.title}</h2>
                 <p>{item.description}</p>
-                {item.checkoutUrl && item.checkoutUrl !== "#" && (
-                  <Link
-                    href={`/schedule?pay=${encodeURIComponent(item.checkoutUrl)}`}
-                    className={styles.ctaButton}
-                  >
-                    {item.ctaText || "Lock it in."}
-                  </Link>
-                )}
-                {item.checkoutUrl === "#" && (
-                  <span className={styles.comingSoon}>Coming soon</span>
-                )}
+                <button
+                  onClick={() =>
+                    setSelectedUrl(
+                      `https://calendly.com/tmcelrath26/noesis-consulting-1-1?redirect_url=${encodeURIComponent(
+                        item.checkoutUrl
+                      )}`
+                    )
+                  }
+                  className={styles.ctaButton}
+                >
+                  Lock it in.
+                </button>
               </div>
             ))}
           </div>
         </div>
       ))}
+
+      {/* Calendly Embed */}
+      {selectedUrl && (
+        <section className={styles.calendlyWrapper}>
+          <iframe
+            src={selectedUrl}
+            width="100%"
+            height="800"
+            frameBorder="0"
+            scrolling="no"
+            style={{ border: "none" }}
+          />
+        </section>
+      )}
     </main>
   );
 }

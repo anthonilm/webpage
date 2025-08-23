@@ -176,3 +176,10 @@ a.secondary {
 :global(section + section) {
   margin-top: 0 !important;
 }
+/* Book a 1:1 Session paragraph fix */
+.oneOnOneText {
+  font-size: 14pt;       /* fixed size */
+  line-height: 1.55;
+  max-width: 900px;
+  margin: 0 auto 18px auto;
+}
