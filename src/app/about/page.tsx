@@ -23,6 +23,10 @@ export default function AboutPage() {
 
   const sections = [
     {
+      title: "RESEARCH AND CREDENTIALS",
+      text:'My interdisciplinary PhD research examines how environmental collapse and social ruptures change relationships among people, institutions, and place, focusing on how these pressures appear in bodies, behavior, and daily environments. I hold an MA and am a Licensed Integrative Mental Health Care Provider. I work specifically with African American and Luso-African social structures. I specialize in burnout, cognitive imbalance (uneven verbal and performance IQ), anxiety, depression, and instability, building supportive behaviors and routines that reduce cognitive load, coordinate support across settings, and enable consistent high performance.',
+    },
+    {
       title: "WHAT I DO",
       text: `I deliver integrative, psychology-informed mental performance care rooted in sympathetic nervous system regulation, COM-B modeling, behavior-identifying assessments, identity-structure tools, and applied habit engineering. Every client builds a custom Individual Engagement Plan (IEP) designed for everyday use, strengthening three domains that shape how people function across contexts—organizational skills (creating order, planning effectively, and following through), emotional regulation (maintaining composure and balance under pressure), and cognitive load management (sustaining focus and clarity in high-demand environments). The goal is to make action systematic so clients leave with practices and structures they can operate daily—practical, repeatable, and durable.`,
     },

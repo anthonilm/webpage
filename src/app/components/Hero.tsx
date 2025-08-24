@@ -109,30 +109,8 @@ export default function Hero() {
         <span style={{ fontSize: 20 }}>P</span>
       </div>
 
-      {/* New Button: Bottom Right */}
-      <button
-        type="button"
-        onClick={() => setOpen(true)}
-        style={{
-          position: "absolute",
-          bottom: "1rem",
-          right: "1rem",
-          padding: "12px 20px",
-          borderRadius: "6px",
-          border: "1px solid rgba(0,0,0,0.3)",
-          backgroundColor: "rgba(0,0,0,0.25)",
-          color: "#fff",
-          fontSize: "1rem",
-          fontWeight: "600",
-          letterSpacing: "0.05em",
-          textTransform: "uppercase",
-          cursor: "pointer",
-          fontFamily: "inherit", // Matches section font
-          backdropFilter: "saturate(120%) blur(2px)",
-        }}
-      >
-        Learn More
-      </button>
+      
+    
 
       {/* Modal */}
       <NoesisMethodModal open={open} onClose={() => setOpen(false)} />
