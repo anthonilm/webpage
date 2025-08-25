@@ -5,15 +5,36 @@ import { motion } from "framer-motion";
 import styles from "./ServicesPage.module.css";
 
 const areasIHelpWith = [
-  "Executive Burnout","Decision Fatigue","Workload Overwhelm","Performance Anxiety",
-  "Focus and Concentration","Procrastination Patterns","Stress Management","Cognitive Endurance",
-  "Sleep Optimization","Resilience Building","Energy Management","Adaptability in Change",
-  "Role Transition Stress","Leadership Pressure","Communication Under Stress","Conflict Navigation",
-  "Strategic Thinking Blocks","Goal Execution Challenges","Mental Recovery After Setbacks",
-  "Overcommitment Recovery","High-Stakes Presentation Nerves","Emotional Regulation in Work",
-  "Decision-Making Clarity","Time and Priority Management","Maintaining Motivation",
-  "Preventing Cognitive Overload","Work-Life Integration","Handling Critical Feedback",
-  "Sustaining Peak Performance","Behavioral Habit Rebuilding",
+  "Burnout and occupational stress",
+  "Indecision and cognitive overload",
+  "Overwhelm and boundary setting",
+  "Performance anxiety",
+  "Attention and concentration support",
+  "Procrastination and avoidance cycles",
+  "Stress and coping skills",
+  "Mental stamina and cognitive fatigue",
+  "Sleep and circadian health",
+  "Resilience and post-stress growth",
+  "Fatigue and energy regulation",
+  "Adjustment to change",
+  "Role transitions and identity shifts",
+  "Leadership stress and imposter feelings",
+  "Communication under pressure",
+  "Conflict resolution and repair",
+  "Cognitive flexibility and problem-solving",
+  "Motivation and task initiation",
+  "Recovery after setbacks",
+  "Overcommitment and people-pleasing patterns",
+  "Public-performance anxiety",
+  "Emotion regulation and distress tolerance",
+  "Values-aligned decision making",
+  "Executive functioning and planning",
+  "Sustaining motivation",
+  "Cognitive load management",
+  "Work–life boundaries and balance",
+  "Processing criticism and feedback",
+  "Sustainable high performance",
+  "Habit change and maintenance",
 ];
 
 const sections = {
@@ -63,7 +84,7 @@ export default function ServicesPage() {
 
       {/* Areas I Help With */}
       <section className={styles.areasSection}>
-        <h2 className={styles.subheading}>Areas I Help With</h2>
+        <h2 className={styles.heading}>Areas I Help With</h2>
         <div className={styles.areasGrid}>
           {areasIHelpWith.map((area, idx) => (
             <div key={idx} className={styles.areaItem}>

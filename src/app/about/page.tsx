@@ -11,10 +11,10 @@ export default function AboutPage() {
   const router = useRouter();
 
   const lead =
-    `Anthoni McElrath is a founder and consultant delivering integrative, psychology-informed mental performance care. His work operationalizes clarity and momentum through engineered behaviors, nervous-system regulation, and practical structures that make high performance sustainable.`;
+    `Anthoni McElrath is a founder and consultant delivering integrative, psychology-informed, behavior focused mental health care.`;
 
   const longVersion = [
-    `There was a point in my life where I had read and studied everything I could find—philosophy, psychology, religion, history, and countless approaches to self-care and growth. I consumed knowledge obsessively, believing it would give me the path to a better life. But despite all that study, I couldn’t act. I carried the weight of depression, anxiety, and years of instability. Awareness alone was not enough to move me out of stagnation and into forward movement and growth.`,
+    `There was a point in my life where I had read and studied everything I could find—philosophy, psychology, religion, history, and countless approaches to self-care and growth. I consumed knowledge obsessively, believing it would give me the path to a better life. But despite all that study, I carried the weight of depression, anxiety, and years of instability. Awareness alone was not enough to move me out of emotional and mental stagnation.`,
     `Through that period, I came to see what the stories of history’s enlightened leaders were really teaching. Their wisdom was not only in what they knew, but in what they did. The path was carried through behavior—how they moved through space, how they acted under strain, and how they created conditions for their best capacities to emerge. We admire them for their ideas and for who they were able to be in practice.`,
     `That realization shifted everything for me. I understood that a quality life is built through the alignment of emotional intelligence with engineered behaviors—actions that sustain long-term growth, protect against what undermines us, and reinforce the conditions for our best function. Mental health is part of it, and it is also about the structures and actions that keep the mind clear, the emotions balanced, and the body capable of carrying us through time with purpose.`,
     `This practice is the translation of that understanding. My work is helping people find stabilty in an unstable political, social, and environmental conditions and building habits and structures that allow them to sustain it.`,
@@ -23,12 +23,8 @@ export default function AboutPage() {
 
   const sections = [
     {
-      title: "RESEARCH AND CREDENTIALS",
-      text:'My interdisciplinary PhD research examines how environmental collapse and social ruptures change relationships among people, institutions, and place, focusing on how these pressures appear in bodies, behavior, and daily environments. I hold an MA and am a Licensed Integrative Mental Health Care Provider. I work specifically with African American and Luso-African social structures. I specialize in burnout, cognitive imbalance (uneven verbal and performance IQ), anxiety, depression, and instability, building supportive behaviors and routines that reduce cognitive load, coordinate support across settings, and enable consistent high performance.',
-    },
-    {
       title: "WHAT I DO",
-      text: `I deliver integrative, psychology-informed mental performance care rooted in sympathetic nervous system regulation, COM-B modeling, behavior-identifying assessments, identity-structure tools, and applied habit engineering. Every client builds a custom Individual Engagement Plan (IEP) designed for everyday use, strengthening three domains that shape how people function across contexts—organizational skills (creating order, planning effectively, and following through), emotional regulation (maintaining composure and balance under pressure), and cognitive load management (sustaining focus and clarity in high-demand environments). The goal is to make action systematic so clients leave with practices and structures they can operate daily—practical, repeatable, and durable.`,
+      text: "", // rendered with structured formatting below
     },
     {
       title: "ANCHORS OF THE WORK",
@@ -42,8 +38,11 @@ export default function AboutPage() {
       title: "OUTCOMES",
       text: `Clients gain sharper organization, steadier regulation, stronger follow-through, and a clearer sense of direction. The systems we build have everyday utility—easing task management, stress regulation, and consistency—and they scale to high-responsibility roles, where clear structure increases team efficiency and supports sound decision-making under pressure. Applied to daily routines or leadership environments, the result is greater function, resilience, and quality of life, sustained by tools that continue to work over time.`,
     },
+    {
+      title: "RESEARCH AND CREDENTIALS",
+      text:'My interdisciplinary PhD research examines how environmental collapse change relationships among people, institutions, and place, focusing on how these pressures appear in social behaviors. I hold an MA and am a Licensed Integrative Mental Health Care Provider.',
+      },
   ];
-
   return (
     <main className={inter.className} style={styles.page}>
       {/* Exit button */}
@@ -88,7 +87,36 @@ export default function AboutPage() {
         {sections.map((s, i) => (
           <section key={i} style={{ marginTop: 48 }}>
             <h2 style={styles.h2}>{s.title}</h2>
-            <p style={styles.p}>{s.text}</p>
+
+            {s.title === "WHAT I DO" ? (
+              <>
+                <p style={styles.p}>
+                  I help people create the structures and behaviors that keep their minds clear, emotions balanced, and bodies steady—even when life feels unstable. My approach blends psychology, nervous system regulation, and applied habit design into a practical system for daily living. Every client builds a personalized Individual Engagement Plan (IEP) that reinforces three foundations of stability:
+                </p>
+
+                <ul style={styles.ul}>
+                  <li style={styles.li}>
+                    <strong>Organizational Skills:</strong> restoring order to tasks, planning effectively, and following through
+                  </li>
+                  <li style={styles.li}>
+                    <strong>Emotional Regulation:</strong> maintaining composure and adaptability under pressure
+                  </li>
+                  <li style={styles.li}>
+                    <strong>Cognitive Load Management:</strong> reducing mental clutter so clarity and focus last
+                  </li>
+                </ul>
+
+                <p style={styles.p}>
+                  When anxiety, depression, or burnout take hold, they rarely arrive as clinical terms—they show up as scattered routines, heightened stress responses, disrupted sleep, or the inability to follow through on what matters. These same challenges undermine performance—whether in daily life or in high-responsibility roles. My work addresses both: building behavioral systems that protect mental health and sustain peak function under pressure.
+                </p>
+
+                <p style={styles.p}>
+                  The outcome is durable stability in an unstable world: practical, repeatable systems that protect mental well-being, reduce overwhelm, and make forward movement possible—whether for everyday function or high-demand environments.
+                </p>
+              </>
+            ) : (
+              <p style={styles.p}>{s.text}</p>
+            )}
           </section>
         ))}
 
@@ -135,7 +163,17 @@ const styles: Record<string, React.CSSProperties> = {
   p: {
     fontSize: 18,
     lineHeight: 1.75,
-    marginBottom: 24,
+    marginBottom: 16,
+  },
+  ul: {
+    paddingLeft: 22,
+    margin: "0 0 16px",
+    listStyleType: "disc",
+  },
+  li: {
+    marginBottom: 8,
+    lineHeight: 1.7,
+    fontSize: 18,
   },
   longBtn: {
     appearance: "none",

@@ -148,3 +148,7 @@
   box-shadow: 0 6px 24px rgba(0, 0, 0, 0.08);
   background: #fff;
 }
+/* Areas list size */
+.areaItem {
+  font-size: 16pt;
+}

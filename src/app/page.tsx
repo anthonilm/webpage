@@ -1,26 +1,28 @@
 // app/page.tsx
 import Hero from "./components/Hero";
-import AboutSection from "./components/AboutSection"; // <-- move import to the top
+import AboutSection from "./components/AboutSection";
 import EmailSignup from "./components/EmailSignup";
 import NewsletterLock from "./components/NewsletterLock";
 import SiteFooter from "./components/SiteFooter";
 import CookieBanner from "./components/CookieBanner";
 import OneOnOneCTA from "./components/OneOnOneCTA";
-import WhoWeAreHorizontal from "./components/WhoWeAreHorizontal"; // <-- NEW
+import WhoWeAreHorizontal from "./components/WhoWeAreHorizontal";
 
 const NL_ITEMS = [
   {
     id: "a1",
     title: "On operating with a weekly rhythm",
     dateISO: "2025-07-01",
-    summary: "A concrete cadence for planning, execution, and review that reduces friction.",
+    summary:
+      "A concrete cadence for planning, execution, and review that reduces friction.",
     href: "/insights/operating-rhythm",
   },
   {
     id: "a2",
     title: "Cognitive load vs. decision quality",
     dateISO: "2025-06-20",
-    summary: "Why reducing concurrent commitments improves attention and error rates.",
+    summary:
+      "Why reducing concurrent commitments improves attention and error rates.",
     href: "/insights/cognitive-load",
   },
 ];
@@ -34,9 +36,12 @@ export default function HomePage() {
           <Hero />
         </section>
 
+      
+
         {/* ABOUT pane – full-height, no wrapper padding */}
         <AboutSection />
 
+        {/* Newsletter / Booking */}
         <section className="section-vh">
           <NewsletterLock items={NL_ITEMS} sectionTitle="Newsletter" />
         </section>
@@ -51,7 +56,7 @@ export default function HomePage() {
             maxHeight: "1in",
             width: "100%",
             boxSizing: "border-box",
-            padding: "0 24px", // horizontal only
+            padding: "0 24px",
             overflow: "hidden",
             display: "flex",
             alignItems: "center",
@@ -75,12 +80,8 @@ export default function HomePage() {
                 lineHeight: 1,
                 fontSize: 28,
               }}
-            >
-            
-            </h2>
-            <div style={{ flex: 1, overflow: "hidden" }}>
-              
-            </div>
+            ></h2>
+            <div style={{ flex: 1, overflow: "hidden" }}></div>
           </div>
         </section>
 

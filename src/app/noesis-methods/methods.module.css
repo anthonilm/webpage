@@ -8,48 +8,104 @@
 }
 
 /* ===== HERO ===== */
-.hero { position: relative; padding: clamp(28px, 6vw, 64px) var(--gutter) 0; }
+.hero {
+  position: relative;
+  padding: clamp(40px, 6vw, 80px) var(--gutter);
+}
+
 .heroBg {
-  position: absolute; inset: 0 0 auto 0; height: clamp(420px, 56vw, 720px); z-index: 0;
+  position: absolute;
+  inset: 0;
+  z-index: 0;
   background:
     radial-gradient(1200px 700px at 20% -20%, rgba(58,132,233,0.16), transparent 60%),
-    linear-gradient(180deg, rgba(15,28,46,0.98), rgba(15,28,46,0.88) 45%, rgba(15,28,46,0.70));
+    linear-gradient(180deg, rgba(35,50,70,0.92), rgba(35,50,70,0.85) 45%, rgba(35,50,70,0.70));
 }
+
 .heroGrid {
-  position: relative; z-index: 1;
-  display: grid; grid-template-columns: 1fr; gap: 20px;
-  max-width: 1320px; margin: 0 auto;
-  align-items: center; /* center both columns vertically */
-}
-@media (min-width: 1024px) {
-  .heroGrid { grid-template-columns: 1fr 1fr; }
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: clamp(32px, 5vw, 64px);
+  max-width: 1320px;
+  margin: 0 auto;
 }
 
-.heroMedia { position: relative; aspect-ratio: 4/5; border-radius: 28px; overflow: hidden; }
-.heroImg { object-fit: cover; }
-
-.heroCopy { padding: clamp(8px, 2vw, 16px); color: #f3f3f1; }
-.heroTitle {
+/* Title with bars */
+.heroHeadline {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  margin-bottom: 1rem;
+  text-align: center;
   font-family: var(--font-cormorant), serif;
-  font-weight: 400;
-  font-size: clamp(30px, 10vw, 132px);
-  line-height: 0.95;
-  letter-spacing: 0.3px;
-  color: #ffffff !important; /* pure white for contrast */
+  font-weight: 600;
+  font-size: clamp(36px, 6vw, 88px);
+  letter-spacing: 0.05em;
+  color: #ffffff !important;
 }
+
+.heroBars {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.heroBars span {
+  display: block;
+  width: 10px;
+  height: 100px;
+  background-color: #b8a77c; /* gold tone */
+}
+
+/* Content under title: two columns */
+.heroContent {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(24px, 4vw, 60px);
+}
+
+.heroCopy {
+  color: #f3f3f1;
+}
+
 .heroKicker {
-  margin-top: clamp(12px, 1.4vw, 18px);
-  max-width: 60ch;
-  font-size: 20pt; /* body text -> 20pt */
+  max-width: 55ch;
+  font-size: clamp(16px, 1.6vw, 20px);
+  line-height: 1.6;
+  text-align: left;
   color: color-mix(in oklab, #ffffff 88%, var(--ivory) 12%);
 }
-.heroCenter {
-  display: flex; flex-direction: column;
-  justify-content: center; align-items: center;
-  text-align: center; height: 100%;
+
+
+/* ===== INTRO SECTION (unchanged) ===== */
+.intro {
+  margin: clamp(24px, 6vw, 56px) auto 0;
+  padding: 0 var(--gutter) clamp(14px, 3vw, 24px);
+  max-width: 1100px;
+  text-align: left;
 }
-/* left-align hero paragraphs in the LEFT column only */
-.heroGrid > .heroMedia.heroCenter { align-items: flex-start; text-align: left; }
+.introEyebrow {
+  text-transform: uppercase; letter-spacing: 0.14em; font-size: 12px; color: var(--slate);
+}
+.introTitle {
+  font-family: var(--font-cormorant), serif;
+  font-weight: 400; font-size: clamp(28px, 6vw, 64px); line-height: 1.05;
+  margin: 6px 0 10px 0;
+}
+.introBody {
+  max-width: 78ch;
+  font-size: 20pt;
+  line-height: 1.65; color: var(--ink);
+}
+.introRule {
+  height: 1px; margin-top: clamp(20px, 4vw, 36px);
+  background: linear-gradient(90deg, var(--rose), var(--saffron), transparent 60%);
+}
+
+/* ===== HORIZONTAL RAIL, FINAL CTA, etc. remain unchanged ===== */
 
 /* ===== INTRO SECTION ===== */
 .intro {
@@ -79,10 +135,10 @@
 /* ===== HORIZONTAL RAIL ===== */
 .rail {
   position: relative;
-  margin: clamp(10px, 4vw, 24px) 0 clamp(36px, 6vw, 72px) 0; /* bottom space before next section */
+  margin: clamp(10px, 4vw, 24px) 0 clamp(36px, 6vw, 72px) 0;
 }
 .railTrack {
-  display: grid; grid-auto-flow: column; grid-auto-columns: 100vw; /* full-viewport slides */
+  display: grid; grid-auto-flow: column; grid-auto-columns: 100vw;
   overflow-x: auto; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch;
   gap: 0;
 }
@@ -92,9 +148,9 @@
 
 /* Slide panel */
 .panel {
-  position: relative; /* anchor for absolute right label */
+  position: relative;
   scroll-snap-align: start;
-  padding: clamp(20px, 6vw, 48px) 0 clamp(20px, 6vw, 48px) var(--gutter); /* more room on right edge */
+  padding: clamp(20px, 6vw, 48px) 0 clamp(20px, 6vw, 48px) var(--gutter);
   min-height: clamp(520px, 68vh, 760px);
   background:
     radial-gradient(900px 400px at 90% -120px, rgba(58,132,233,0.10), transparent 70%),
@@ -106,58 +162,41 @@
     grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
     gap: clamp(20px, 4vw, 56px);
     align-items: center;
-    text-align: left; /* desktop left for text column */
+    text-align: left;
   }
 }
 
-/* Left column (explanation) */
 .panelLeft { max-width: 720px; margin: 0 auto; }
 .phaseTag {
   letter-spacing: 0.14em; text-transform: uppercase; font-size: 12px; color: var(--slate);
 }
 .panelKicker {
-  font-family: var(--font-geist-sans), system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  font-family: var(--font-geist-sans), sans-serif;
   font-weight: 600; font-size: clamp(16px, 2.2vw, 22px); line-height: 1.25;
   margin: 4px 0 8px 0; color: var(--ink);
 }
 .panelBody {
-  font-size: 20pt; /* body text -> 20pt */
+  font-size: 20pt;
   line-height: 1.65; color: var(--ink);
   max-width: 70ch;
 }
-
-/* Right column (big label ONLY: "PHASE X"), pinned to far right */
 @media (max-width: 1023px) { .panelRight { display: none; } }
 .panelRight {
-  position: absolute;      /* pin to the panel */
-  top: 50%;
-  right: max(4vw, var(--gutter)); /* hug right edge */
+  position: absolute;
+  top: 50%; right: max(4vw, var(--gutter));
   transform: translateY(-50%);
-  pointer-events: none;    /* decorative */
+  pointer-events: none;
   text-align: right;
-  width: auto;
 }
 .phaseBig {
   font-family: var(--font-cormorant), serif;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
+  letter-spacing: 0.08em; text-transform: uppercase;
   font-size: clamp(42px, 8vw, 112px);
   line-height: 1;
   color: var(--ink);
-  white-space: nowrap;     /* keep “PHASE 2” on one line */
+  white-space: nowrap;
 }
-/* Safety: hide any leftover big-title element */
 .panelBigTitle { display: none !important; }
-
-/* (Legacy helpers kept for compatibility) */
-.panelText { max-width: 720px; margin: 0 auto; }
-.panelTitle {
-  font-family: var(--font-cormorant), serif;
-  font-weight: 400; font-size: clamp(26px, 5vw, 52px); line-height: 1.08;
-  margin: 6px 0 8px; color: var(--ink);
-}
-.panelMedia { position: relative; aspect-ratio: 4/3; border-radius: 26px; overflow: hidden; }
-.panelImg { object-fit: cover; }
 
 /* Progress accent under the rail */
 .progress {
@@ -186,8 +225,7 @@
   font-weight: 400; font-size: clamp(22px, 3.8vw, 36px);
 }
 .finalBody {
-  font-size: 20pt; /* body text -> 20pt */
-  color: var(--slate); margin-top: 4px;
+  font-size: 20pt; color: var(--slate); margin-top: 4px;
 }
 .btnRow { display: flex; flex-wrap: wrap; gap: 12px; }
 .btnPrimary {
@@ -198,7 +236,7 @@
 .btnPrimary:hover { opacity: .9; }
 .btnLink { font-size: 14px; text-decoration: underline; color: var(--ink); }
 
-/* Pricing list (kept) */
+/* Pricing list */
 .pricingList {
   max-width: 60ch; margin: 10px auto 0;
   display: grid; gap: 18px; text-align: left;
@@ -208,8 +246,7 @@
   font-size: clamp(16px, 2vw, 20px); font-weight: 600; color: var(--ink);
 }
 .priceRow dd {
-  margin: 4px 0 0 0; font-size: 20pt; /* body text -> 20pt */
-  color: var(--ink);
+  margin: 4px 0 0 0; font-size: 20pt; color: var(--ink);
 }
 .priceTitle, .priceVal { white-space: nowrap; }
 .dotLeader {
@@ -217,4 +254,23 @@
   background-image: radial-gradient(currentColor 1px, transparent 1px);
   background-size: 6px 1ch; background-repeat: repeat-x; background-position: left center;
   opacity: 0.35;
+}
+
+/* Additions */
+.getTitle {
+  margin-top: 10px;
+  font-size: 14px; letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--slate);
+}
+.getList {
+  list-style: none; margin: 8px 0 0 0; padding: 0;
+  display: grid; gap: 6px; max-width: 70ch;
+}
+.getList li {
+  position: relative; padding-left: 28px; line-height: 1.5;
+  font-size: 20pt; color: var(--ink);
+}
+.getList li::before {
+  content: "✔"; position: absolute; left: 0; top: 0.05em;
+  font-size: 1em; color: var(--sky);
 }

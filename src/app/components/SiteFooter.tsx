@@ -91,39 +91,46 @@ export default function SiteFooter() {
         #site-footer {
           background: transparent;
           color: #111;
-          /* Remove any borders on the footer itself */
           border: 0;
         }
         .wrap {
           max-width: 1200px;
           margin: 0 auto;
           padding: 56px 24px 24px;
+          width: 100%;
+          box-sizing: border-box; /* ensures padding is respected */
         }
 
-        /* Top grid: Nav + Newsletter */
-        .cols {
-          display: grid;
-          grid-template-columns: 1fr 1.6fr;
-          gap: 56px;
-          align-items: start;
-        }
+       /* Top grid: Nav + Newsletter */
+.cols {
+  display: grid;
+  grid-template-columns: 240px 1fr;  /* fixed width for nav, rest for newsletter */
+  gap: 56px;
+  align-items: start;
+}
 
-        /* Pages list: ONE column, even spacing */
-        .pages {
-          list-style: none;
-          padding: 0;
-          margin: 0;
-          display: grid;
-          gap: 14px;
-        }
-        .pages a {
-          text-decoration: none;
-          color: inherit;
-          font-weight: 750;
-          letter-spacing: 0.02em;
-          font-size: 15px;
-          line-height: 1.4;
-        }
+/* Constrain nav column */
+.col.nav {
+  max-width: 240px;
+  width: 100%;
+}
+
+/* Pages list */
+.pages {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 14px;
+}
+.pages a {
+  text-decoration: none;
+  color: inherit;
+  font-weight: 750;
+  letter-spacing: 0.02em;
+  font-size: 15px;
+  line-height: 1.6;
+}
         .pages a:hover { opacity: 0.7; }
 
         /* Newsletter column */
@@ -144,6 +151,8 @@ export default function SiteFooter() {
           grid-template-columns: 1fr 1fr auto;
           gap: 24px;
           align-items: center;
+          width: 100%;
+          box-sizing: border-box;
         }
         .signup input {
           height: 56px;
@@ -152,6 +161,8 @@ export default function SiteFooter() {
           color: #fff;
           padding: 0 18px;
           font-size: 15px;
+          width: 100%;
+          box-sizing: border-box;
         }
         .signup input::placeholder { color: #fff; }
         .signup button {
@@ -183,7 +194,7 @@ export default function SiteFooter() {
         .social ul { list-style: none; display: flex; gap: 24px; padding: 0; margin: 0; }
         .social svg { fill: currentColor; }
 
-        /* Bottom bar — NO BORDER LINE */
+        /* Bottom bar */
         .bottom {
           display: grid;
           grid-template-columns: auto auto auto 1fr;
@@ -191,8 +202,10 @@ export default function SiteFooter() {
           align-items: center;
           padding-top: 28px;
           margin-top: 28px;
-          border-top: none;          /* ← removes the line */
+          border-top: none;
           font-size: 14px;
+          width: 100%;
+          box-sizing: border-box;
         }
         .bottom a { text-decoration: none; color: inherit; font-weight: 700; }
         .siteby { justify-self: end; }
